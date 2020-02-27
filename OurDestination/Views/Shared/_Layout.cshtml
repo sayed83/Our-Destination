@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+    @* added by shahin *@
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,700i&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/4.7.95/css/materialdesignicons.css" rel="stylesheet">
+    <link href="~/Content/ecommerce/fonts/fontawesome/css/fontawesome-all.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/fakeloader/fakeloader.css" rel="stylesheet" />
+    <link href="~/Content/Toast/toastr.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/dataTables.bootstrap4.css" rel="stylesheet" />
+    <link href="~/Content/css/select2.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/select.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/select.bootstrap4.min.css" rel="stylesheet" />
+
+    @*<link href="~/Content/DataTables/css/responsive.bootstrap4.min.css" rel="stylesheet" />*@
+    <link href="~/Content/DataTables/css/buttons.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/buttons.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/fixedColumns.dataTables.min.css" rel="stylesheet" />
+    @*<link href="~/Content/DataTables/css/fixedHeader.bootstrap4.min.css" rel="stylesheet" />*@
+    @*<link href="~/Content/Site.css" rel="stylesheet" />*@
+    <link href="~/Content/styleShahin.css" rel="stylesheet" />
+    <link href="~/Content/customStyle.css" rel="stylesheet" />
+    <link href="~/Content/InlineStyle.css" rel="stylesheet" />
+
+
+    @* added by shahin *@
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/DataTables/dataTables.bootstrap4.js"></script>
+    <script src="~/Scripts/select2.min.js"></script>
+    <script src="~/Scripts/dataTables.cellEdit.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/DataTables/dataTables.select.min.js"></script>
+    <script src="~/Scripts/DataTables/dataTables.buttons.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+
+
+    <script src="~/Scripts/nicescroll/jquery.nicescroll.js"></script>
+    <script src="~/Scripts/umd/popper.js"></script>
+    <script src="~/Scripts/Toast/toastr.min.js"></script>
+    <script src="~/Scripts/Toast/toaster_custom.js"></script>
+
+
+
+    @*<script src="~/Scripts/DataTables/dataTables.responsive.min.js"></script>
+        <script src="~/Scripts/DataTables/responsive.bootstrap4.min.js"></script>*@
+    <script src="~/Scripts/DataTables/dataTables.fixedColumns.min.js"></script>
+    <script src="~/Scripts/DataTables/dataTables.fixedHeader.min.js"></script>
+
+
+    @*<script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>*@
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+    <script src="~/Scripts/DataTables/buttons.bootstrap4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+    <script src="~/Scripts/DataTables/buttons.colVis.min.js"></script>
+
+    <script src="~/Content/ecommerce/js/plugins/owlcarousel/owl.carousel.js"></script>
+    <script src="~/Content/fakeloader/fakeloader.js"></script>
+    <script src="~/Content/ecommerce/js/customScript/script.js"></script>
+    <style>
+        .dropdown-item:hover {
+            color: #3a3737;
+            background-color: #ccc;
+        }
+    </style>
+
+
+
+</head>
+<body>
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Member", "Index", "Members")</li>
+                        <li>@Html.ActionLink("Committee", "Index", "Committees")</li>
+                        <li>@Html.ActionLink("Transection", "Index", "Transections")</li>
+                        <li>@Html.ActionLink("Invest", "Index", "Invests")</li>
+                        <li>@Html.ActionLink("Profit", "Index", "Profits")</li>
+                        <li>@Html.ActionLink("Expenses", "Index", "Expenses_Master")</li>
+                        <li>@Html.ActionLink("Blood Group", "Index", "BloodGroups")</li>
+
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>*@
+    @*<div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)*@
+
+
+    <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            @Html.ActionLink("My Web Portal", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <div class="navbar-collapse collapse" id="navbarSupportedContent">
+
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Member", "Index", "Members", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Committee", "Index", "Committees", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Transection", "Index", "Transections", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Invest", "Index", "Invests", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Profit", "Index", "Profits", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Expenses", "Index", "Expenses_Master", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Blood Group", "Index", "BloodGroups", null, new { @class = "nav-link" })</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </nav>
+    <br />
+    <br />
+    <br />
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <hr />
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

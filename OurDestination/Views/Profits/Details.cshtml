@@ -1,0 +1,83 @@
+﻿@model POS_Rezor.Models.Profit
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Profit</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Invest.InvestPurpose)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Invest.InvestPurpose)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProfitDec)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProfitDec)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProfitAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProfitAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GivenDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GivenDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.comid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.comid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntryDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddedBy)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProfitId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

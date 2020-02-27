@@ -1,0 +1,89 @@
+﻿@model POS_Rezor.Models.Profit
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Profit</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Invest.InvestPurpose)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Invest.InvestPurpose)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProfitDec)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProfitDec)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProfitAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProfitAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GivenDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GivenDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.comid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.comid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntryDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddedBy)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
