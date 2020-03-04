@@ -1,16 +1,19 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace POS_Rezor.Models
+namespace OurDestination.Models
 {
     public class Transection
     {
 
         public int TransectionId { get; set; }
         [Required]
-        public Month Month { get; set; }
+        public int MonthId { get; set; }
+        public virtual Month Month { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
         [Required]
         public DateTime GivenDate { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? EntryDate { get; set; }
 
         [Required]
@@ -22,19 +25,9 @@ namespace POS_Rezor.Models
 
     }
 
-    public enum Month
+    public class Month
     {
-        January,
-        February,
-        March,
-        April,
-        May,
-        June,
-        July,
-        August,
-        September,
-        October,
-        November,
-        December
+        public int MonthId { get; set; }
+        public string MonthName { get; set; }
     }
 }

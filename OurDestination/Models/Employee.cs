@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace POS_Rezor.Models
+namespace OurDestination.Models
 {
     public class Employee
     {
@@ -12,9 +12,10 @@ namespace POS_Rezor.Models
         [Required]
         public string Email { get; set; }
         public string PhotoPath { get; set; }
-        public Dept? Department { get; set; }
+        public int? DepartmentId { get; set; }
+        public Department Department { get; set; }
 
-        public int SectionId { get; set; }
+        public int? SectionId { get; set; }
         public virtual Section Section { get; set; }
     }
 }

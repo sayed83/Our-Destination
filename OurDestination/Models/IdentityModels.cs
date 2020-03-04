@@ -33,6 +33,12 @@ namespace OurDestination.Models
         public virtual DbSet<Profit> Profit { get; set; }
         public virtual DbSet<Expenses_Master> Expenses_Master { get; set; }
         public virtual DbSet<Expenses_Details> Expenses_Details { get; set; }
+        public virtual DbSet<Department> Department { get; set; }
+        public virtual DbSet<MemberInvoiceList> MemberInvoiceList { get; set; }
+        public virtual DbSet<MemberPaymentType> MemberPaymentType { get; set; }
+        public virtual DbSet<MonthlyPaymentSetup> MonthlyPaymentSetup { get; set; }
+        public virtual DbSet<PaymentAmount> PaymentAmount { get; set; }
+
 
 
         public static ApplicationDbContext Create()
@@ -40,6 +46,8 @@ namespace OurDestination.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<POS_Rezor.Models.BloodGroup> BloodGroups { get; set; }
+        public System.Data.Entity.DbSet<OurDestination.Models.BloodGroup> BloodGroups { get; set; }
     }
+
+   
 }
