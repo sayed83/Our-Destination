@@ -38,6 +38,7 @@ namespace OurDestination.Models
         public virtual DbSet<MemberPaymentType> MemberPaymentType { get; set; }
         public virtual DbSet<MonthlyPaymentSetup> MonthlyPaymentSetup { get; set; }
         public virtual DbSet<PaymentAmount> PaymentAmount { get; set; }
+        public virtual DbSet<Month> Month { get; set; }
 
 
 

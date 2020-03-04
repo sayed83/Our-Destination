@@ -7,117 +7,110 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using OurDestination.Models;
-using POS_Rezor.Models;
 
 namespace OurDestination.Controllers
 {
-    public class TransectionsController : Controller
+    public class DepartmentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Transections
+        // GET: Departments
         public ActionResult Index()
         {
-            var transection = db.Transection.Include(t => t.Member).Include(m =>m.Month);
-            return View(transection.ToList());
+            return View(db.Department.ToList());
         }
 
-        // GET: Transections/Details/5
+        // GET: Departments/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Transection transection = db.Transection.Find(id);
-            if (transection == null)
+            Department department = db.Department.Find(id);
+            if (department == null)
             {
                 return HttpNotFound();
             }
-            return View(transection);
+            return View(department);
         }
 
-        // GET: Transections/Create
+        // GET: Departments/Create
         public ActionResult Create()
         {
-            ViewBag.MemberId = new SelectList(db.Member, "MemberId", "MemberName");
-            ViewBag.MonthId  = new SelectList(db.Month, "MonthId", "MonthName");
             return View();
         }
 
-        // POST: Transections/Create
+        // POST: Departments/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TransectionId,Month,GivenDate,EntryDate,TransectionAmount,userid,comid,MemberId")] Transection transection)
+        public ActionResult Create([Bind(Include = "DepartmentId,DepartmentName")] Department department)
         {
             if (ModelState.IsValid)
             {
-                db.Transection.Add(transection);
+                db.Department.Add(department);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MemberId = new SelectList(db.Member, "MemberId", "MemberName", transection.MemberId);
-            return View(transection);
+            return View(department);
         }
 
-        // GET: Transections/Edit/5
+        // GET: Departments/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Transection transection = db.Transection.Find(id);
-            if (transection == null)
+            Department department = db.Department.Find(id);
+            if (department == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MemberId = new SelectList(db.Member, "MemberId", "MemberName", transection.MemberId);
-            return View(transection);
+            return View(department);
         }
 
-        // POST: Transections/Edit/5
+        // POST: Departments/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TransectionId,Month,GivenDate,EntryDate,TransectionAmount,userid,comid,MemberId")] Transection transection)
+        public ActionResult Edit([Bind(Include = "DepartmentId,DepartmentName")] Department department)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(transection).State = EntityState.Modified;
+                db.Entry(department).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MemberId = new SelectList(db.Member, "MemberId", "MemberName", transection.MemberId);
-            return View(transection);
+            return View(department);
         }
 
-        // GET: Transections/Delete/5
+        // GET: Departments/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Transection transection = db.Transection.Find(id);
-            if (transection == null)
+            Department department = db.Department.Find(id);
+            if (department == null)
             {
                 return HttpNotFound();
             }
-            return View(transection);
+            return View(department);
         }
 
-        // POST: Transections/Delete/5
+        // POST: Departments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Transection transection = db.Transection.Find(id);
-            db.Transection.Remove(transection);
+            Department department = db.Department.Find(id);
+            db.Department.Remove(department);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<POS_Rezor.Models.Committee>
+﻿@model IEnumerable<OurDestination.Models.Committee>
 
 @{
     ViewBag.Title = "Index";
@@ -8,63 +8,61 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Member.MemberName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Position)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ElactedDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.userid)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.comid)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EntryDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AddedBy)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Member.MemberName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Position)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ElactedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.userid)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.comid)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EntryDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AddedBy)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card p-2">
+                <div class="row">
+                    <div class="col">
+                        @Html.ActionLink("Create New", "Create", null, null, new { @Class = "btn btn-primary" })
+                    </div>
+                    <div class="col">
+                        <h2 id="styletext">
+                            Committees List
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="card p-2">
+                <table class="table table-hover text-center table-striped table-sm" id="tbllist">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Member.MemberName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Position)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ElactedDate)
+                        </th>
+                        <th>Action</th>
+                    </tr>
 
-</table>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Member.MemberName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Position)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ElactedDate)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

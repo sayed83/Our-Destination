@@ -1,0 +1,75 @@
+﻿@model OurDestination.Models.PaymentAmount
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PaymentAmount</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Department.DepartmentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Department.DepartmentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Member.MemberName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Member.MemberName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentTypeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentTypeId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Active)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.comid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.comid)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PaymentAmountId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -7,117 +7,110 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using OurDestination.Models;
-using POS_Rezor.Models;
 
 namespace OurDestination.Controllers
 {
-    public class TransectionsController : Controller
+    public class MemberPaymentTypesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Transections
+        // GET: MemberPaymentTypes
         public ActionResult Index()
         {
-            var transection = db.Transection.Include(t => t.Member).Include(m =>m.Month);
-            return View(transection.ToList());
+            return View(db.MemberPaymentType.ToList());
         }
 
-        // GET: Transections/Details/5
+        // GET: MemberPaymentTypes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Transection transection = db.Transection.Find(id);
-            if (transection == null)
+            MemberPaymentType memberPaymentType = db.MemberPaymentType.Find(id);
+            if (memberPaymentType == null)
             {
                 return HttpNotFound();
             }
-            return View(transection);
+            return View(memberPaymentType);
         }
 
-        // GET: Transections/Create
+        // GET: MemberPaymentTypes/Create
         public ActionResult Create()
         {
-            ViewBag.MemberId = new SelectList(db.Member, "MemberId", "MemberName");
-            ViewBag.MonthId  = new SelectList(db.Month, "MonthId", "MonthName");
             return View();
         }
 
-        // POST: Transections/Create
+        // POST: MemberPaymentTypes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TransectionId,Month,GivenDate,EntryDate,TransectionAmount,userid,comid,MemberId")] Transection transection)
+        public ActionResult Create([Bind(Include = "PaymentId,PaymentType,Active")] MemberPaymentType memberPaymentType)
         {
             if (ModelState.IsValid)
             {
-                db.Transection.Add(transection);
+                db.MemberPaymentType.Add(memberPaymentType);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MemberId = new SelectList(db.Member, "MemberId", "MemberName", transection.MemberId);
-            return View(transection);
+            return View(memberPaymentType);
         }
 
-        // GET: Transections/Edit/5
+        // GET: MemberPaymentTypes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Transection transection = db.Transection.Find(id);
-            if (transection == null)
+            MemberPaymentType memberPaymentType = db.MemberPaymentType.Find(id);
+            if (memberPaymentType == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MemberId = new SelectList(db.Member, "MemberId", "MemberName", transection.MemberId);
-            return View(transection);
+            return View(memberPaymentType);
         }
 
-        // POST: Transections/Edit/5
+        // POST: MemberPaymentTypes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TransectionId,Month,GivenDate,EntryDate,TransectionAmount,userid,comid,MemberId")] Transection transection)
+        public ActionResult Edit([Bind(Include = "PaymentId,PaymentType,Active")] MemberPaymentType memberPaymentType)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(transection).State = EntityState.Modified;
+                db.Entry(memberPaymentType).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MemberId = new SelectList(db.Member, "MemberId", "MemberName", transection.MemberId);
-            return View(transection);
+            return View(memberPaymentType);
         }
 
-        // GET: Transections/Delete/5
+        // GET: MemberPaymentTypes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Transection transection = db.Transection.Find(id);
-            if (transection == null)
+            MemberPaymentType memberPaymentType = db.MemberPaymentType.Find(id);
+            if (memberPaymentType == null)
             {
                 return HttpNotFound();
             }
-            return View(transection);
+            return View(memberPaymentType);
         }
 
-        // POST: Transections/Delete/5
+        // POST: MemberPaymentTypes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Transection transection = db.Transection.Find(id);
-            db.Transection.Remove(transection);
+            MemberPaymentType memberPaymentType = db.MemberPaymentType.Find(id);
+            db.MemberPaymentType.Remove(memberPaymentType);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
