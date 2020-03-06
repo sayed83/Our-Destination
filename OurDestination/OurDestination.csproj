@@ -83,6 +83,18 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.WebForms.10.0.40219.1\lib\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -220,9 +232,15 @@
     <Compile Include="Controllers\MemberPaymentTypesController.cs" />
     <Compile Include="Controllers\MembersController.cs" />
     <Compile Include="Controllers\MonthlyPaymentSetupsController.cs" />
+    <Compile Include="Controllers\MonthsController.cs" />
     <Compile Include="Controllers\PaymentAmountsController.cs" />
     <Compile Include="Controllers\ProfitsController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\ReportViewerController.cs" />
     <Compile Include="Controllers\TransectionsController.cs" />
+    <Compile Include="Data\ClsReport.cs" />
+    <Compile Include="Data\AppData.cs" />
+    <Compile Include="Data\RptConnectionClass.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -260,8 +278,10 @@
     <Compile Include="Models\ModuleMenu.cs" />
     <Compile Include="Models\Modules.cs" />
     <Compile Include="Models\MonthlyPaymentSetup.cs" />
+    <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\PaymentAmount.cs" />
     <Compile Include="Models\Profit.cs" />
+    <Compile Include="Models\DynamicReport.cs" />
     <Compile Include="Models\Section.cs" />
     <Compile Include="Models\Transection.cs" />
     <Compile Include="Models\ViewModel\CompanyUser.cs" />
@@ -270,6 +290,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\ROCEDURE.sql" />
     <Content Include="Content\Addvertising.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -1017,8 +1038,8 @@
     <Content Include="Content\icheckbox\dataTables.checkboxes.css" />
     <Content Include="Content\icheckbox\dataTables.checkboxes.min.js" />
     <Content Include="Content\icheckbox\icheck.min.js" />
-    <Content Include="Content\images\52.jpg" />
-    <Content Include="Content\images\icon-info.png" />
+    <Content Include="Content\Images\52.jpg" />
+    <Content Include="Content\Images\icon-info.png" />
     <Content Include="Content\img\4hLogo.png" />
     <Content Include="Content\img\accessdenied.png" />
     <Content Include="Content\img\construction.png" />
@@ -1467,9 +1488,15 @@
     <Content Include="Views\MonthlyPaymentSetups\Details.cshtml" />
     <Content Include="Views\MonthlyPaymentSetups\Edit.cshtml" />
     <Content Include="Views\MonthlyPaymentSetups\Index.cshtml" />
+    <Content Include="Views\Months\Create.cshtml" />
+    <Content Include="Views\Months\Delete.cshtml" />
+    <Content Include="Views\Months\Details.cshtml" />
+    <Content Include="Views\Months\Edit.cshtml" />
+    <Content Include="Views\Months\Index.cshtml" />
+    <Content Include="Views\Report\RptPayment.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="Views\ReportViewer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1508,6 +1535,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003041634006_Anotation.resx">
       <DependentUpon>202003041634006_Anotation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\MonthlyPayment.rdlc">
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

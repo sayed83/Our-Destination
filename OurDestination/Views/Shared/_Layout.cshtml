@@ -123,24 +123,64 @@
         @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)*@
 
-
     <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark">
         <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            @Html.ActionLink("My Web Portal", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <div class="navbar-collapse collapse" id="navbarSupportedContent">
+            @Html.ActionLink("Our Destination", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <div class="navbar-collapse collapse">   
+                
+                
 
-                <ul class="nav navbar-nav mr-auto">
+                <ul class="nav navbar-nav mr-auto" role="menu">
                     <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Member", "Index", "Members", null, new { @class = "nav-link" })</li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            House Keeping
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="~/Members/Index">Member</a>
+                            <a class="dropdown-item" href="~/Committees/Index">Committee</a>
+                            <a class="dropdown-item" href="~/MonthlyPaymentSetups/Index">Payment Setup</a>
+                            <a class="dropdown-item" href="~/PaymentAmounts/Index">Payment Amount</a>
+                            <a class="dropdown-item" href="~/MemberPaymentTypes/Index">Payment Type</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Accounting 
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="~/Members/Index">Member</a>
+                            <a class="dropdown-item" href="~/Committees/Index">Committee</a>
+                            <a class="dropdown-item" href="~/MonthlyPaymentSetups/Index">Payment Setup</a>
+                            <a class="dropdown-item" href="~/PaymentAmounts/Index">Payment Amount</a>
+                            <a class="dropdown-item" href="~/MemberPaymentTypes/Index">Payment Type</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            System Admin 
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="~/Members/Index">Member</a>
+                            <a class="dropdown-item" href="~/Committees/Index">Committee</a>
+                            <a class="dropdown-item" href="~/MonthlyPaymentSetups/Index">Payment Setup</a>
+                            <a class="dropdown-item" href="~/PaymentAmounts/Index">Payment Amount</a>
+                            <a class="dropdown-item" href="~/MemberPaymentTypes/Index">Payment Type</a>
+                        </div>
+                    </li>
+
+                    @*<li class="nav-item">@Html.ActionLink("Member", "Index", "Members", null, new { @class = "nav-link" })</li>
                     <li class="nav-item">@Html.ActionLink("Committee", "Index", "Committees", null, new { @class = "nav-link" })</li>
                     <li class="nav-item">@Html.ActionLink("Transection", "Index", "Transections", null, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Invest", "Index", "Invests", null, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Profit", "Index", "Profits", null, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Expenses", "Index", "Expenses_Master", null, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Blood Group", "Index", "BloodGroups", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Invest", "Index", "Invests", null, new { @class = "nav-link" })</li>*@
+                    <li class="nav-item">@Html.ActionLink("Destination", "Index", "Home", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("About Us", "About", "Home", null, new { @class = "nav-link" })</li>
+                   
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -161,6 +201,13 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.dropdown-toggle').dropdown();
+    });
+</script>
+
     @RenderSection("scripts", required: false)
 
 </body>

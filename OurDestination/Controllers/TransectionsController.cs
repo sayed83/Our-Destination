@@ -40,6 +40,7 @@ namespace OurDestination.Controllers
         // GET: Transections/Create
         public ActionResult Create()
         {
+            ViewBag.Title = "Create";
             ViewBag.MemberId = new SelectList(db.Member, "MemberId", "MemberName");
             ViewBag.MonthId  = new SelectList(db.Month, "MonthId", "MonthName");
             return View();
@@ -50,7 +51,7 @@ namespace OurDestination.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TransectionId,Month,GivenDate,EntryDate,TransectionAmount,userid,comid,MemberId")] Transection transection)
+        public ActionResult Create([Bind(Include = "TransectionId,MonthId,GivenDate,EntryDate,TransectionAmount,userid,comid,MemberId")] Transection transection)
         {
             if (ModelState.IsValid)
             {
@@ -60,12 +61,14 @@ namespace OurDestination.Controllers
             }
 
             ViewBag.MemberId = new SelectList(db.Member, "MemberId", "MemberName", transection.MemberId);
+            ViewBag.MonthId = new SelectList(db.Month, "MonthId", "MonthName", transection.MonthId);
             return View(transection);
         }
 
         // GET: Transections/Edit/5
         public ActionResult Edit(int? id)
         {
+            ViewBag.Title = "Edit";
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -84,7 +87,7 @@ namespace OurDestination.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TransectionId,Month,GivenDate,EntryDate,TransectionAmount,userid,comid,MemberId")] Transection transection)
+        public ActionResult Edit([Bind(Include = "TransectionId,MonthId,GivenDate,EntryDate,TransectionAmount,userid,comid,MemberId")] Transection transection)
         {
             if (ModelState.IsValid)
             {
@@ -99,6 +102,7 @@ namespace OurDestination.Controllers
         // GET: Transections/Delete/5
         public ActionResult Delete(int? id)
         {
+            ViewBag.Title = "Delete";
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
