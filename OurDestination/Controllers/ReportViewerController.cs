@@ -42,9 +42,9 @@ namespace OurDestination.Controllers
                 reportpath = Session["ReportPath"].ToString();
                 Session["ReportPath"] = "";
             }
-            if (Session["ReportQuery"] != null)
+            if (Session["ReportQuary"] != null)
             {
-                reportquery = Session["ReportQuery"].ToString();
+                reportquery = Session["ReportQuary"].ToString();
             }
             if (Session["ReportType"] != null)
             {
@@ -109,12 +109,13 @@ namespace OurDestination.Controllers
 
             report.DisplayName = "Report";
             renderedBytest = report.Render(reporttype, deviceInfo, out mimeType, out encoding, out fileNameExtension, out streams, out warnings);
-            var FileName = Session["PrintFileName"].ToString() + "_" + DateTime.Now.ToString("yyyyMMdd");
+            var sFileName = "MonthlyAmount";
+           // var FileName = Session["PrintFileName"].ToString() + "_" + DateTime.Now.ToString("yyyyMMdd");
 
             Response.Buffer = true;
             Response.Clear();
             Response.ContentType = mimeType;
-            Response.AddHeader("content-disposition", "attachment;filename=" + FileName + "." + reportformat);
+            Response.AddHeader("content-disposition", "attachment;filename=" + sFileName + "." + reportformat);
             return File(renderedBytest,mimeType);
         }
 

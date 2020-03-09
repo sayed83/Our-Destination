@@ -25,9 +25,5 @@ namespace OurDestination.Models
 
     }
 
-    public class Month
-    {
-        public int MonthId { get; set; }
-        public string MonthName { get; set; }
-    }
+    
 }

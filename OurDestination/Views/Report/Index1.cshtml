@@ -1,0 +1,12 @@
+﻿@model OurDestination.Models.PaymentAmount
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<span data-toggle="tooltip" title="Master LC / Contact Wise PI List">
+    @Html.ActionLink(" ", "PrintRPT", new { @*Id = item.MasterLCID,*@ type = "pdf" }, new { @target = "_blank", @class = "far fa-file-pdf btn btn-success btn-xs" })
+</span>

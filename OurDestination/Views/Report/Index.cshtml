@@ -1,0 +1,76 @@
+﻿@model IEnumerable<OurDestination.Models.PaymentAmount>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="container-fluid">
+    <div class="row">
+        <table class="table table-bordered table-hover table-responsive table-secondary ">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Department.DepartmentName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Member.MemberName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PaymentTypeId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Amount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Active)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.userid)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.comid)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Member.MemberName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PaymentTypeId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Active)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.userid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.comid)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.PaymentAmountId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.PaymentAmountId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.PaymentAmountId })
+                        <button class="btn btn-outline-dark mb-2 btn-block" type="button" onclick="ReportPrint('PrintBBLCReport')">REPORT</button>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

@@ -5,66 +5,170 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="container-fluid">
+    <div class="card p-2">
+        <div class="row ">
+            <div class="col">
+                <span>
+                    @Html.ActionLink("Payment Create", "Create", null, null, new { @class = "btn btn-primary" })
+                </span>
+            </div>
+            <div class="col">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
+                <h2 id="styletext"> Amount List</h2>
+
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="card p-2">
+        <div class="row ">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-5 col-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">From Date:</label>
+                            <div class="col-sm-9">
+                                @Html.TextBox("FromDate", null, new { @class = "form-control", @placeholder = "From Date", @autocomplete = "off", name = "FromDate" })
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">To Date:</label>
+                            <div class="col-sm-9">
+                                @Html.TextBox("ToDate", null, new { @class = "form-control", @placeholder = "To Date", @autocomplete = "off", name = "ToDate" })
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <input type="submit" name="name" value="Load" class="btn btn-outline-info" />
+                    </div>
+                    <div class="col-md-1">
+                        <button class="btn btn-outline-primary" type="button" onclick="ReportPrint('PrintRPT')">Report</button>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-9"></div>
+                    <div class="col">
+                        <fieldset class="text-left pr-2">
+                            <label>
+                                <input type="radio" name="RptType" value="PDF" checked="checked" />PDF
+                            </label>
+                            <label>
+                                <input type="radio" name="RptType" value="EXCEL" /> EXCEL
+                            </label>
+                            <label>
+                                <input type="radio" name="RptType" value="WORD" /> WORD
+                            </label>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <div class="card p-5">
+        <div class="row">
+            <table class="table table-bordered table-hover table-light">
+                <tr>
+                    @*<th>
             @Html.DisplayNameFor(model => model.Department.DepartmentName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Member.MemberName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PaymentTypeId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Amount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Active)
-        </th>
-        <th>
+        </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.Member.MemberName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MemberPaymentType.PaymentType)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Month.MonthName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Amount)
+                    </th>
+
+                    @*<th>
             @Html.DisplayNameFor(model => model.userid)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.comid)
-        </th>
-        <th></th>
-    </tr>
+        </th>*@
+                    <th>Action</th>
+                </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Department.DepartmentName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Member.MemberName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PaymentTypeId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Amount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Active)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.userid)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.comid)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PaymentAmountId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PaymentAmountId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PaymentAmountId })
-        </td>
-    </tr>
-}
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+                        </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Member.MemberName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MemberPaymentType.PaymentType)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Month.MonthName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Amount)
+                        </td>
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.Active)
+                        </td>*@
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.userid)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.comid)
+                        </td>*@
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.PaymentAmountId }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.PaymentAmountId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.PaymentAmountId })
+                        </td>
+                    </tr>
+                }
 
-</table>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+    <script type="text/javascript">
+
+        function ReportPrint(btnvalue) {
+                var FromDate = $('#FromDate').val();
+            var ToDate = $('#ToDate').val();
+            var ReportType = $("input[name=RptType]:checked").val();
+            debugger
+            $.ajax({
+                
+                type: 'POST',
+                url: '@Url.Action("RptPaymentAmount","PaymentAmounts")',
+                dataType: 'json',
+                async: true,
+                data: {ReportType:ReportType, Action:btnvalue, FromDate: FromDate, ToDate: ToDate },
+                success: function (res) {
+                    window.open(res.Url, '_blank')
+                },
+                error: function (ex) {
+                    alert('Failed' + ex);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            
+        });
+    </script>
+
+

@@ -20,7 +20,8 @@ namespace OurDestination.Controllers
         // GET: Report
         public ActionResult Index()
         {
-            return View();
+            var MonthlyPayment = _context.PaymentAmount.ToList();
+            return View(MonthlyPayment);
         }
 
         public ActionResult RptPayment()

@@ -9,7 +9,7 @@ namespace OurDestination.Models
     public class MemberPaymentType
     {
         [Key]
-        public int PaymentId { get; set; }
+        public int PaymentTypeId { get; set; }
         [Required]
         public string PaymentType { get; set; }
         public bool Active { get; set; }
