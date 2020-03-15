@@ -238,7 +238,9 @@
     <Compile Include="Controllers\MembersController.cs" />
     <Compile Include="Controllers\MonthlyPaymentSetupsController.cs" />
     <Compile Include="Controllers\MonthsController.cs" />
-    <Compile Include="Controllers\PaymentAmountsController.cs" />
+    <Compile Include="Controllers\OrdersController - Copy.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\Payment_MasterController.cs" />
     <Compile Include="Controllers\ProfitsController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\ReportViewerController.cs" />
@@ -274,6 +276,18 @@
     <Compile Include="Migrations\202003091748348_Month_Add_With_PaymentAmount.Designer.cs">
       <DependentUpon>202003091748348_Month_Add_With_PaymentAmount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003101813445_Payment_Master_Details.cs" />
+    <Compile Include="Migrations\202003101813445_Payment_Master_Details.Designer.cs">
+      <DependentUpon>202003101813445_Payment_Master_Details.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003130536447_MargePayment.cs" />
+    <Compile Include="Migrations\202003130536447_MargePayment.Designer.cs">
+      <DependentUpon>202003130536447_MargePayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003131431115_Order_Customer.cs" />
+    <Compile Include="Migrations\202003131431115_Order_Customer.Designer.cs">
+      <DependentUpon>202003131431115_Order_Customer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Committee.cs" />
@@ -297,15 +311,19 @@
     <Compile Include="Models\Modules.cs" />
     <Compile Include="Models\MonthlyPaymentSetup.cs" />
     <Compile Include="Models\Payment.cs" />
-    <Compile Include="Models\PaymentAmount.cs" />
+    <Compile Include="Models\Payment_Master.cs" />
+    <Compile Include="Models\Profession.cs" />
     <Compile Include="Models\Profit.cs" />
     <Compile Include="Models\DynamicReport.cs" />
     <Compile Include="Models\Month.cs" />
-    <Compile Include="Models\Section.cs" />
+    <Compile Include="Models\Orders.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Transection.cs" />
     <Compile Include="Models\ViewModel\CompanyUser.cs" />
+    <Compile Include="Models\ViewModel\MyOrderViewModel.cs" />
     <Compile Include="Models\ViewModel\ReportVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Section.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1222,6 +1240,7 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Custom\Payment.js" />
     <Content Include="Scripts\dataTables.cellEdit.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
@@ -1502,11 +1521,6 @@
     <Content Include="Views\Departments\Details.cshtml" />
     <Content Include="Views\Departments\Edit.cshtml" />
     <Content Include="Views\Departments\Index.cshtml" />
-    <Content Include="Views\PaymentAmounts\Create.cshtml" />
-    <Content Include="Views\PaymentAmounts\Delete.cshtml" />
-    <Content Include="Views\PaymentAmounts\Details.cshtml" />
-    <Content Include="Views\PaymentAmounts\Edit.cshtml" />
-    <Content Include="Views\PaymentAmounts\Index.cshtml" />
     <Content Include="Views\MemberInvoiceLists\Create.cshtml" />
     <Content Include="Views\MemberInvoiceLists\Delete.cshtml" />
     <Content Include="Views\MemberInvoiceLists\Details.cshtml" />
@@ -1530,6 +1544,19 @@
     <Content Include="Views\Report\RptPayment.cshtml" />
     <Content Include="Views\Report\Index1.cshtml" />
     <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\Payment_Master\Create.cshtml" />
+    <Content Include="Views\Payment_Master\Delete.cshtml" />
+    <Content Include="Views\Payment_Master\Details.cshtml" />
+    <Content Include="Views\Payment_Master\Edit.cshtml" />
+    <Content Include="Views\Payment_Master\Index.cshtml" />
+    <Content Include="Views\Orders\Create.cshtml" />
+    <Content Include="Views\Orders\Delete.cshtml" />
+    <Content Include="Views\Orders\Details.cshtml" />
+    <Content Include="Views\Orders\Edit.cshtml" />
+    <Content Include="Views\Orders\IndexOld1.cshtml" />
+    <Content Include="Views\Orders\IndexScaffold.cshtml" />
+    <Content Include="Views\Orders\CreateOld.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\ReportViewer\" />
@@ -1577,6 +1604,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003091748348_Month_Add_With_PaymentAmount.resx">
       <DependentUpon>202003091748348_Month_Add_With_PaymentAmount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003101813445_Payment_Master_Details.resx">
+      <DependentUpon>202003101813445_Payment_Master_Details.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003130536447_MargePayment.resx">
+      <DependentUpon>202003130536447_MargePayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003131431115_Order_Customer.resx">
+      <DependentUpon>202003131431115_Order_Customer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\MonthlyPayment.rdlc">
       <SubType>Designer</SubType>

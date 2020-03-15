@@ -29,7 +29,8 @@ namespace OurDestination.Models
         public Religion? Religion { get; set; }
         public Gender? Gender { get; set; }
         public string EducationalQualification { get; set; }
-        public string Profession { get; set; }
+        public int? ProfessionId { get; set; }
+        public virtual Profession Profession { get; set; }
         public string NIDNo { get; set; }
         public string PassportNo { get; set; }
         public string TinNo { get; set; }

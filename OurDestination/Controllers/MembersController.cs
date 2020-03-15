@@ -50,7 +50,7 @@ namespace OurDestination.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MemberId,MemberName,JoiningDate,FatherName,MotherName,SpouseName,Nationality,DOB,Email,PhotoPath,Image,PhoneNo,MaritalStatus,Religion,Gender,EducationalQualification,NIDNo,PassportNo,TinNo,PresentAddress,PermanentAddress,NomineeName,RelationWithNominee,NomineeNIDNo,NomineePhoneNo,userid,comid,IsActive,EntryDate,BloodGroupId")] Member member)
+        public ActionResult Create([Bind(Include = "MemberId,MemberNo,MemberName,JoiningDate,FatherName,MotherName,SpouseName,Nationality,DOB,Email,PhotoPath,PhoneNo,MaritalStatus,Religion,Gender,EducationalQualification,Profession,NIDNo,PassportNo,TinNo,PresentAddress,PermanentAddress,NomineeName,RelationWithNominee,NomineeNIDNo,NomineePhoneNo,userid,comid,IsActive,EntryDate,BloodGroupId")] Member member)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +95,7 @@ namespace OurDestination.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MemberId,MemberName,JoiningDate,FatherName,MotherName,SpouseName,Nationality,DOB,Email,PhotoPath,Image,PhoneNo,MaritalStatus,Religion,Gender,EducationalQualification,NIDNo,PassportNo,TinNo,PresentAddress,PermanentAddress,NomineeName,RelationWithNominee,NomineeNIDNo,NomineePhoneNo,userid,comid,IsActive,EntryDate,BloodGroupId")] Member member)
+        public ActionResult Edit([Bind(Include = "MemberId,MemberNo,MemberName,JoiningDate,FatherName,MotherName,SpouseName,Nationality,DOB,Email,PhotoPath,PhoneNo,MaritalStatus,Religion,Gender,EducationalQualification,Profession,NIDNo,PassportNo,TinNo,PresentAddress,PermanentAddress,NomineeName,RelationWithNominee,NomineeNIDNo,NomineePhoneNo,userid,comid,IsActive,EntryDate,BloodGroupId")] Member member)
         {
             if (ModelState.IsValid)
             {

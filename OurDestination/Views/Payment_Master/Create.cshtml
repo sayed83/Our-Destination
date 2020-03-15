@@ -1,0 +1,220 @@
+﻿@model IEnumerable<OurDestination.Models.Payment_Master>
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    //@Html.AntiForgeryToken()
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 mb-2">
+                <div class="table-responsive card p-5">
+                    <table class="tabel table-condensed">
+                        <tr class="row">
+                            <td id="divstyle" class="col">
+                                <span>Member Name</span>
+                                <span class="input-group">
+                                    @Html.DropDownList("MemberId", ViewBag.MemberId as List<SelectListItem>, new { id = "MemberId", @class = "form-control" })
+                                </span>
+                            </td>
+                            <td id="divstyle" class="col">
+                                <span>Payment Type</span>
+                                <span class="input-group">
+                                    @Html.DropDownList("PaymentTypeId", ViewBag.PaymentTypeId as List<SelectListItem>, new { id = "PaymentTypeId", @class = "form-control" })
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="row">
+                            <td id="divstyle" class="col">
+                                <span>Month</span>
+                                <span class="input-group">
+                                    @Html.DropDownList("MonthId", ViewBag.MonthId as List<SelectListItem>, new { id = "MonthId", @class = "form-control" })
+                                </span>
+                            </td>
+                            <td class="col">
+                                <span>Monthly Fee</span>
+                                <span class="input-group">
+                                    @Html.TextBox("Amount", "", new { id = "Amount", @class = "form-control" })
+                                </span>
+                            </td>
+
+                        </tr>
+
+                        <tr class="row text-center">
+                            <td class="col-5">
+                                <span></span>
+                                <span>
+
+                                </span>
+                            </td>
+                            <td class="col-2">
+                                <span></span>
+                                <span class="input-group">
+                                    @*<button class="btn btn-success btn-block mb-2" type="button" onclick="addPayment()">
+                                        Add
+                                    </button>*@
+                                    <a id="btnAdd" class="btn btn-success btn-block">Add</a>
+                                </span>
+                            </td>
+                            <td class="col-5">
+                                <span></span>
+                                <span>
+
+
+                                </span>
+                            </td>
+
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-2">
+                <button type="submit" id="savePayment" class="btn btn-outline-danger btn-block">Save</button>
+            </div>
+            <div class="col-2">
+                @Html.ActionLink("Back", "Index", "COM_ProformaInvoice", null, new { @class = "btn btn-outline-info btn-block", @id = "btnBack" })
+            </div>
+            <div class="col-4"></div>
+        </div>
+        <br />
+        <div id="paymentAdd" class="row">
+            <div class="col-me-12">
+                <div class="card p-5">
+                    <div class="table">
+                        <table id="tblpaymentAdd" class="tblpaymentAdd table table-striped table-bordered table-sm responsive nowrap table-hover" width="100%">
+                            <tbody>
+                                <tr>
+                                    <th>Member</th>
+                                    <th>Type</th>
+                                    <th>Month</th>
+                                    <th>Amount</th>
+                                    <th>Action</th>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                @*@if (Model != null)
+                                    {
+                                        foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayTextFor(m => item.Member.MemberName)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayTextFor(m => item.MemberPaymentType.PaymentType)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayTextFor(m => item.Month.MonthName)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayTextFor(m => item.Amount)
+                                                </td>
+                                                <td>
+                                                    <a class="dttrash" data-itemId="0" href="#"><i class="fa fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }*@
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts{
+    <script>
+        $('#btnAdd').click(function (e) {
+            e.preventDefault();
+            if ($.trim($('#Amount').val() == ""))
+                return;
+            alert('ok');
+            var memberName = $('#MemberId').val(),
+                paymentType = $('#PaymentTypeId').val(),
+                monthName = $('#MonthId').val(),
+                Amount = $('#Amount').val(),
+                tableBody = $('#tblpaymentAdd tbody');
+
+            var paymentItem = '<tr><td>'
+                + memberName + '</td><td>'
+                + paymentType + '</td><td>'
+                + monthName + '</td><td>'
+                + Amount + '</td><td><a data-itemId="0" href="#" class="deleteItem">Remove</a></td></tr>';
+            tableBody.append(paymentItem);
+            clrarItem();
+        });
+
+        function clearItem() {
+            $('#MemberId').val('');
+            $('#PaymentTypeId').val('');
+            $('#MonthId').val('');
+            $('#Amount').val('');
+        }
+
+        $(document).on('click', 'a.deleteItem', function (e) {
+            e.preventDefault();
+            var $self = $(this);
+            if ($(this).attr('data-itemId') == "0") {
+                $(this).parents('tr').css("background-color", "#ff6347").fadeOut(800, function () {
+                    $(this).remove();
+                });
+            }
+        });
+
+        function savePayment(data) {
+            return $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                url: "/Payment_Master/Create",
+                data: data,
+                success: function (result) {
+                    location.reload();
+                },
+                error: function () {
+                    alert("Error!")
+                }
+            });
+        }
+
+        $('#savePayment').click(function (e) {
+            e.preventDefault();
+
+            var paymentlist = [];
+            paymentlist.length = 0;
+
+            $.each($('#tblpaymentAdd tbody tr'), function () {
+                paymentlist.push({
+                    memberName: $(this).find('td:eq(0)').html(),
+                    paymentType: $(this).find('td:eq(1)').html(),
+                    monthName: $(this).find('td:eq(2)').html(),
+                    Amount: $(this).find('td:eq(3)').html(),
+
+                });
+            });
+
+            var data = JSON.stringify({
+                
+            });
+
+            $.when(PaymentSave(data)).then(function (res) {
+                console.log(res);
+            }).fail(function (err) {
+                console.log(err);
+            });
+        });
+    </script>
+}

@@ -20,13 +20,13 @@ namespace OurDestination.Controllers
         // GET: Report
         public ActionResult Index()
         {
-            var MonthlyPayment = _context.PaymentAmount.ToList();
+            var MonthlyPayment = _context.Payment_Master.ToList();
             return View(MonthlyPayment);
         }
 
         public ActionResult RptPayment()
         {
-           IQueryable<PaymentAmount> paymentAmount = _context.PaymentAmount.Take(20);
+           IQueryable<Payment_Master> paymentAmount = _context.Payment_Master.Take(20);
             return View(paymentAmount);
         }
 
@@ -35,7 +35,7 @@ namespace OurDestination.Controllers
             try
             {
                 AppData.DBName = _context.Database.Connection.Database;
-                var reportname = _context.PaymentAmount.Where(p => p.PaymentAmountId == id).Select(p => p.Member.MemberName).FirstOrDefault();
+                //var reportname = _context.Payment_Master.Where(p => p.Payment_MasterId == id).Select(p => p.Member.MemberName).FirstOrDefault();
                 Session["ReportPath"] = "~/Report/MonthlyPayment.rdlc";
                 Session["ReportQuary"] = "EXEC" + AppData.DBName.ToString() + ".dbo.[rptGlobalSearch]'" + id +"'";
                 string DatabaseSourceName = "DetaSet1";

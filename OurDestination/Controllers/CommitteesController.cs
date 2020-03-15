@@ -40,6 +40,7 @@ namespace OurDestination.Controllers
         // GET: Committees/Create
         public ActionResult Create()
         {
+            ViewBag.Title = "Create";
             ViewBag.MemberId = new SelectList(db.Member, "MemberId", "MemberName");
             return View();
         }
@@ -65,6 +66,7 @@ namespace OurDestination.Controllers
         // GET: Committees/Edit/5
         public ActionResult Edit(int? id)
         {
+            ViewBag.Title = "Edit";
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -75,7 +77,7 @@ namespace OurDestination.Controllers
                 return HttpNotFound();
             }
             ViewBag.MemberId = new SelectList(db.Member, "MemberId", "MemberName", committee.MemberId);
-            return View(committee);
+            return View("Create", committee);
         }
 
         // POST: Committees/Edit/5
@@ -98,6 +100,7 @@ namespace OurDestination.Controllers
         // GET: Committees/Delete/5
         public ActionResult Delete(int? id)
         {
+            ViewBag.Title = "Delete";
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -107,18 +110,30 @@ namespace OurDestination.Controllers
             {
                 return HttpNotFound();
             }
-            return View(committee);
+            ViewBag.MemberId = new SelectList(db.Member, "MemberId", "MemberName", committee.MemberId);
+            return View("Create", committee);
         }
 
         // POST: Committees/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Committee committee = db.Committee.Find(id);
-            db.Committee.Remove(committee);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+
+
+                Committee committee = db.Committee.Find(id);
+                db.Committee.Remove(committee);
+                db.SaveChanges();
+                return Json(new { Success = 1, id = committee.Id, ex = TempData["Message"].ToString() });
+            }
+            catch (Exception ex)
+            {
+
+                TempData["Message"] = "Unable to Delete the Data.";
+                TempData["Status"] = "3";
+                return Json(new { Success = 0, ex = ex.Message.ToString() });
+            }
         }
 
         protected override void Dispose(bool disposing)

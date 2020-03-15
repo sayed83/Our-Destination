@@ -20,7 +20,7 @@
 
     <br />
     <form class="card p-2">
-        <table id="tbllist" class="table table-striped tabel-bordered table-sm table-hover table-responsive text-center" cellspacing="0">
+        <table id="tbllist" class="table table-striped tabel-bordered table-hover table-responsive text-center" >
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.MemberNo)
@@ -101,7 +101,7 @@
                         @Html.DisplayFor(modelItem => item.NIDNo)
                     </td>
 
-                    <td>
+                    <td >
                         @Html.DisplayFor(modelItem => item.NomineeName)
                     </td>
                     <td>
@@ -111,9 +111,9 @@
                         @Html.DisplayFor(modelItem => item.IsActive)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.MemberId }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.MemberId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.MemberId })
+                        @Html.ActionLink(" ", "Edit", new { id = item.MemberId }, new { @class = "fas fa-edit btn btn-outline-warning" })
+                        @*@Html.ActionLink(" ", "Details", new { id = item.MemberId }, new { @class = "fas fa-frown btn btn-outline-danger btn-xs" }) 
+                        @Html.ActionLink(" ", "Delete", new { id = item.MemberId }, new { @class = "far fa-trash-alt btn btn-outline-danger btn-xs" })*@
                     </td>
                 </tr>
             }

@@ -19,6 +19,10 @@
                     <h4>Committee</h4>
                     <hr />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @if (Model != null)
+                    {
+                        <input type="hidden" id="CommitteeId" name="CommitteeId" value="@Model.Id" />
+                    }
                     <div class="row">
                         <div class="col">
                             <div class="">
@@ -90,9 +94,9 @@
                             }
                             else if (ViewBag.Title == "Delete")
                             {
-                                @*<span>
-                                        <input type="submit" value="Delete" class="btn btn-danger" onclick="Delete_Commetees()" />
-                                    </span>*@
+                                <span>
+                                    <input type="submit" value="Delete" class="btn btn-danger" onclick="Delete_Commetees()" />
+                                </span>
                             }
                             <span>
                                 @Html.ActionLink("Back", "Index", null, null, new { @Class = "btn btn-info" })
@@ -106,6 +110,33 @@
 }
 
 
+
+<script type="text/javascript">
+        function Delete_Commetees() {
+            var id = $('#CommitteeId').val();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Delete","Committees")',
+                dataType: 'json',
+                data: JSON.stringify({ id = id }),
+                success: function (data) {
+                    if (data.Success == "1") {
+                        customFile('3', data.ex);
+                        window.setTimeout(function () {
+                            window.location.href = '@Url.Action("Index", "Committees")';
+                        }, 500);
+                    } else {
+                        toastr.error(data.ex);
+                    }
+                }
+            })
+        }
+
+
+</script>
+
+
 @section Scripts {
+
     @Scripts.Render("~/bundles/jqueryval")
 }
