@@ -52,15 +52,45 @@ namespace OurDestination.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Position,ElactedDate,userid,comid,EntryDate,AddedBy,MemberId")] Committee committee)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Committee.Add(committee);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
+                    if (committee.Id>0)
+                    {
+                        committee.userid = 1 ;
+                        committee.AddedBy = "Shahed";
+                        committee.comid = 1;
+                        db.Entry(committee).State = EntityState.Modified;
+                        TempData["Message"] = "Data Updated Successfully";
+                        TempData["Status"] = "2";
+                    }
+                    else
+                    {
+                        committee.userid = 1;
+                        committee.AddedBy = "Shahed";
+                        committee.comid = 1;
+                        db.Committee.Add(committee);
+                        TempData["Message"] = "Data Save Successfully";
+                        TempData["Status"] = "1";
+                    }
+                    
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
 
-            ViewBag.MemberId = new SelectList(db.Member, "MemberId", "MemberName", committee.MemberId);
-            return View(committee);
+                ViewBag.MemberId = new SelectList(db.Member, "MemberId", "MemberName", committee.MemberId);
+                return View(committee);
+            }
+            catch (Exception ex)
+            {
+
+                TempData["Message"] = "Unable to Save / Update";
+                committee.Id = 0;
+                TempData["Status"] = "0";
+                throw ex;
+            }
+            
         }
 
         // GET: Committees/Edit/5
@@ -78,23 +108,6 @@ namespace OurDestination.Controllers
             }
             ViewBag.MemberId = new SelectList(db.Member, "MemberId", "MemberName", committee.MemberId);
             return View("Create", committee);
-        }
-
-        // POST: Committees/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Position,ElactedDate,userid,comid,EntryDate,AddedBy,MemberId")] Committee committee)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(committee).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.MemberId = new SelectList(db.Member, "MemberId", "MemberName", committee.MemberId);
-            return View(committee);
         }
 
         // GET: Committees/Delete/5
@@ -116,7 +129,7 @@ namespace OurDestination.Controllers
 
         // POST: Committees/Delete/5
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int? id)
         {
             try
             {
@@ -125,6 +138,8 @@ namespace OurDestination.Controllers
                 Committee committee = db.Committee.Find(id);
                 db.Committee.Remove(committee);
                 db.SaveChanges();
+                TempData["Message"] = "Data Delete Successfully";
+                TempData["Status"] = "3";
                 return Json(new { Success = 1, id = committee.Id, ex = TempData["Message"].ToString() });
             }
             catch (Exception ex)

@@ -95,7 +95,7 @@
                             else if (ViewBag.Title == "Delete")
                             {
                                 <span>
-                                    <input type="submit" value="Delete" class="btn btn-danger" onclick="Delete_Commetees()" />
+                                    <input type="button" value="Delete" class="btn btn-danger" onclick="Delete_Commetees()" />
                                 </span>
                             }
                             <span>
@@ -112,24 +112,56 @@
 
 
 <script type="text/javascript">
-        function Delete_Commetees() {
-            var id = $('#CommitteeId').val();
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("Delete","Committees")',
-                dataType: 'json',
-                data: JSON.stringify({ id = id }),
-                success: function (data) {
-                    if (data.Success == "1") {
-                        customFile('3', data.ex);
-                        window.setTimeout(function () {
-                            window.location.href = '@Url.Action("Index", "Committees")';
-                        }, 500);
-                    } else {
-                        toastr.error(data.ex);
+    function ConfirmDialog(message) {
+            $('<div></div>').appendTo('body')
+                .html('<div><h6>' + message + '?</h6></div>')
+                .dialog({
+                    modal: true,
+                    title: 'Delete message',
+                    zIndex: 10000,
+                    autoOpen: true,
+                    width: 'auto',
+                    resizable: false,
+                    buttons: {
+                        Yes: function () {
+
+                            $(this).dialog("close");
+                            BuyerGroup_delete();
+
+                        },
+                        No: function () {
+
+                            $(this).dialog("close");
+                        }
+                    },
+                    close: function (event, ui) {
+                        $(this).remove();
                     }
-                }
-            })
+                });
+        };
+        function Delete_Commetees() {
+            var CommitteeId = $("#CommitteeId").val();
+            $.ajax({
+
+                url: '@Url.Action("Delete", "Committees")',
+                                data: JSON.stringify({ id: CommitteeId }), //use id here
+                                //data: JSON.stringify(salesmain),
+                                type: 'POST',
+                                contentType: 'application/json;',
+                                dataType: 'json',
+                               success: function (result) {
+                                    if (result.Success == "1") {
+                                        customFile('3', result.ex);
+                                        window.setTimeout(function () {
+                                            // Move to a new location or you can do something else
+                                            window.location.href = '@Url.Action("Index", "Committees")';
+                                        }, 500);
+                                    }
+                                    else {
+                                        toastr.error(result.ex);
+                                    }
+                                }
+            });
         }
 
 

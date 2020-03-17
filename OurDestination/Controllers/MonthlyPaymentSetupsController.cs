@@ -39,6 +39,7 @@ namespace OurDestination.Controllers
         // GET: MonthlyPaymentSetups/Create
         public ActionResult Create()
         {
+            ViewBag.Title = "Create";
             ViewBag.DepartmentId = new SelectList(db.Department, "DepartmentId", "DepartmentName");
             ViewBag.MonthId = new SelectList(db.Month, "MonthId", "MonthName");
             return View();
@@ -51,21 +52,37 @@ namespace OurDestination.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "PaymentSetupId,DepartmentId,MonthId,Total,Year")] MonthlyPaymentSetup monthlyPaymentSetup)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.MonthlyPaymentSetup.Add(monthlyPaymentSetup);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
+                    if (monthlyPaymentSetup.PaymentSetupId > 0)
+                    {
+                        db.Entry(monthlyPaymentSetup).State = EntityState.Modified;
+                    }
+                    else
+                    {
+                        db.MonthlyPaymentSetup.Add(monthlyPaymentSetup);
+                    }
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
 
-            ViewBag.DepartmentId = new SelectList(db.Department, "DepartmentId", "DepartmentName", monthlyPaymentSetup.DepartmentId);
-            ViewBag.MonthId = new SelectList(db.Month, "MonthId", "MonthName", monthlyPaymentSetup.MonthId);
-            return View(monthlyPaymentSetup);
+                ViewBag.DepartmentId = new SelectList(db.Department, "DepartmentId", "DepartmentName", monthlyPaymentSetup.DepartmentId);
+                ViewBag.MonthId = new SelectList(db.Month, "MonthId", "MonthName", monthlyPaymentSetup.MonthId);
+                return View(monthlyPaymentSetup);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         // GET: MonthlyPaymentSetups/Edit/5
         public ActionResult Edit(int? id)
         {
+            ViewBag.Title = "Edit";
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -77,7 +94,7 @@ namespace OurDestination.Controllers
             }
             ViewBag.DepartmentId = new SelectList(db.Department, "DepartmentId", "DepartmentName", monthlyPaymentSetup.DepartmentId);
             ViewBag.MonthId = new SelectList(db.Month, "MonthId", "MonthName", monthlyPaymentSetup.MonthId);
-            return View(monthlyPaymentSetup);
+            return View("Create", monthlyPaymentSetup);
         }
 
         // POST: MonthlyPaymentSetups/Edit/5
@@ -101,6 +118,7 @@ namespace OurDestination.Controllers
         // GET: MonthlyPaymentSetups/Delete/5
         public ActionResult Delete(int? id)
         {
+            ViewBag.Title = "Delete";
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -110,7 +128,9 @@ namespace OurDestination.Controllers
             {
                 return HttpNotFound();
             }
-            return View(monthlyPaymentSetup);
+            ViewBag.DepartmentId = new SelectList(db.Department, "DepartmentId", "DepartmentName", monthlyPaymentSetup.DepartmentId);
+            ViewBag.MonthId = new SelectList(db.Month, "MonthId", "MonthName", monthlyPaymentSetup.MonthId);
+            return View("Create", monthlyPaymentSetup);
         }
 
         // POST: MonthlyPaymentSetups/Delete/5
