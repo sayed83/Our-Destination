@@ -12,6 +12,10 @@ namespace OurDestination.Controllers
         {
             return View();
         }
+        public ActionResult ShoppingCard()
+        {
+            return View();
+        }
 
         public ActionResult About()
         {

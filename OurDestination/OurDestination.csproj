@@ -1572,6 +1572,7 @@
     <Content Include="Views\Orders\IndexScaffold.cshtml" />
     <Content Include="Views\Orders\CreateOld.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\Home\ShoppingCard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\ReportViewer\" />
