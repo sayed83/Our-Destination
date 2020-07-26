@@ -254,7 +254,8 @@
     <Compile Include="Controllers\MonthsController.cs" />
     <Compile Include="Controllers\OrdersController - Copy.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
-    <Compile Include="Controllers\Payment_MasterController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
+    <Compile Include="Controllers\Payment_DetailsController.cs" />
     <Compile Include="Controllers\ProfitsController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\ReportViewerController.cs" />
@@ -302,6 +303,14 @@
     <Compile Include="Migrations\202003131431115_Order_Customer.Designer.cs">
       <DependentUpon>202003131431115_Order_Customer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004240513097_ModelModidy.cs" />
+    <Compile Include="Migrations\202004240513097_ModelModidy.Designer.cs">
+      <DependentUpon>202004240513097_ModelModidy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004241016374_PaymentDetails.cs" />
+    <Compile Include="Migrations\202004241016374_PaymentDetails.Designer.cs">
+      <DependentUpon>202004241016374_PaymentDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Committee.cs" />
@@ -325,6 +334,7 @@
     <Compile Include="Models\Modules.cs" />
     <Compile Include="Models\MonthlyPaymentSetup.cs" />
     <Compile Include="Models\Payment.cs" />
+    <Compile Include="Models\Payment_Details.cs" />
     <Compile Include="Models\Payment_Master.cs" />
     <Compile Include="Models\Profession.cs" />
     <Compile Include="Models\Profit.cs" />
@@ -1573,6 +1583,16 @@
     <Content Include="Views\Orders\CreateOld.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\Home\ShoppingCard.cshtml" />
+    <Content Include="Views\Payment\Create.cshtml" />
+    <Content Include="Views\Payment\Delete.cshtml" />
+    <Content Include="Views\Payment\Details.cshtml" />
+    <Content Include="Views\Payment\Edit.cshtml" />
+    <Content Include="Views\Payment\Index.cshtml" />
+    <Content Include="Views\Payment_Details\Create.cshtml" />
+    <Content Include="Views\Payment_Details\Delete.cshtml" />
+    <Content Include="Views\Payment_Details\Details.cshtml" />
+    <Content Include="Views\Payment_Details\Edit.cshtml" />
+    <Content Include="Views\Payment_Details\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\ReportViewer\" />
@@ -1629,6 +1649,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003131431115_Order_Customer.resx">
       <DependentUpon>202003131431115_Order_Customer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004240513097_ModelModidy.resx">
+      <DependentUpon>202004240513097_ModelModidy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004241016374_PaymentDetails.resx">
+      <DependentUpon>202004241016374_PaymentDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\MonthlyPayment.rdlc">
       <SubType>Designer</SubType>

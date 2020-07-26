@@ -17,8 +17,13 @@ namespace OurDestination.Models
         public string Name { get; set; }
         public string Address { get; set; }
         public System.DateTime OrderDate { get; set; }
+        public string userid { get; set; }
+        public int? comid { get; set; }
+        public string AddedBy { get; set; }
+        public string UpdatedBy { get; set; }
+        public DateTime? AddedDate { get; set; }
+        public DateTime? UpdatedDate { get; set; }
 
-        
         public virtual ICollection<Orders> Orders { get; set; }
 
     }

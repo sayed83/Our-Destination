@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace POS_Rezor.Models
+namespace OurDestination.Models
 {
     public class MenuPermission_Master
     {

@@ -22,5 +22,10 @@ namespace OurDestination.Models
         public string AddedBy { get; set; }
         public int? MemberId { get; set; }
         public virtual Member Member { get; set; }
+        public string UpdatedBy { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime? AddedDate { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime? UpdatedDate { get; set; }
     }
 }

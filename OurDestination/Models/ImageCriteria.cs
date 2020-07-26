@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace POS_Rezor.Models
+namespace OurDestination.Models
 {
     public class ImageCriteria
     {

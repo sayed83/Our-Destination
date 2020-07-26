@@ -1,7 +1,9 @@
-﻿using System;
+﻿using OurDestination.Models;
+using POS_Rezor.Models;
+using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace POS_Rezor.Models
+namespace OurDestination.Models
 {
     public class MenuPermission_Details
     {
@@ -19,6 +21,14 @@ namespace POS_Rezor.Models
         public virtual MenuPermission_Master MenuPermission_Master { get; set; }
         public int ModuleMenuId { get; set; }
         public virtual ModuleMenu ModuleMenu { get; set; }
+        public int? userid { get; set; }
+        public int? comid { get; set; }
+        public string AddedBy { get; set; }
+        public string UpdatedBy { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime? AddedDate { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime? UpdatedDate { get; set; }
 
     }
 }

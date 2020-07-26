@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace POS_Rezor.Models
+namespace OurDestination.Models
 {
     public enum Dept
     {

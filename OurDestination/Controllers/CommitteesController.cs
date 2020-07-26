@@ -58,7 +58,7 @@ namespace OurDestination.Controllers
                 {
                     if (committee.Id>0)
                     {
-                        committee.userid = 1 ;
+                        committee.userid = "1" ;
                         committee.AddedBy = "Shahed";
                         committee.comid = 1;
                         db.Entry(committee).State = EntityState.Modified;
@@ -67,7 +67,7 @@ namespace OurDestination.Controllers
                     }
                     else
                     {
-                        committee.userid = 1;
+                        committee.userid = "1";
                         committee.AddedBy = "Shahed";
                         committee.comid = 1;
                         db.Committee.Add(committee);

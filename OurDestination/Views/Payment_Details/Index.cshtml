@@ -1,0 +1,112 @@
+﻿@model IEnumerable<OurDestination.Models.Payment_Details>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MemberPaymentType.PaymentType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Month.MonthName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Payment_Master.Member.MemberName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaymentDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaymentAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NetAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GivenYear)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.AddedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.userid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.comid)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MemberPaymentType.PaymentType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Month.MonthName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Payment_Master.Member.MemberName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaymentDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaymentAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NetAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GivenYear)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.AddedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdateDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.userid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.comid)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PaymentDetailsId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PaymentDetailsId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PaymentDetailsId })
+        </td>
+    </tr>
+}
+
+</table>

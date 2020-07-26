@@ -38,7 +38,7 @@ namespace OurDestination.Models
         public virtual DbSet<MemberPaymentType> MemberPaymentType { get; set; }
         public virtual DbSet<MonthlyPaymentSetup> MonthlyPaymentSetup { get; set; }
         public virtual DbSet<Payment_Master> Payment_Master { get; set; }
-        //public virtual DbSet<Payment_Details> Payment_Details { get; set; }
+        public virtual DbSet<Payment_Details> Payment_Details { get; set; }
         public virtual DbSet<Month> Month { get; set; }
         public virtual DbSet<Profession> Profession { get; set; }
         public virtual DbSet<Orders> Orders { get; set; }
