@@ -129,5 +129,14 @@ namespace OurDestination.Controllers
             }
             base.Dispose(disposing);
         }
+        protected override void Dispose1(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
     }
 }
