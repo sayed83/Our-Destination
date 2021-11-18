@@ -39,6 +39,14 @@ namespace OurDestination.Controllers
             return date + "-" + UniqueId;
         }
 
+        public string RandomDigits1(int Length, string data)
+        {
+            DateTime date = DateTime.Now;
+            string UniqueId = string.Format("{1:00}{2:00}{3:00}{0:0000}", date.Month, date.Day, date.Millisecond, date.Year);
+            UniqueId = new string(UniqueId.Take(Length).ToArray());
+            return date + "-" + UniqueId;
+        }
+
 
     }
 }
