@@ -1593,7 +1593,6 @@
     <Content Include="Views\Payment_Details\Details.cshtml" />
     <Content Include="Views\Payment_Details\Edit.cshtml" />
     <Content Include="Views\Payment_Details\Index.cshtml" />
-    <Content Include="Views\Months\Edit - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\ReportViewer\" />
